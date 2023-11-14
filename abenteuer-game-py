@@ -1,0 +1,105 @@
+from colorama import Fore, Style
+import time
+
+def intro():
+    print(Fore.GREEN + "Willkommen im Abenteuer!")
+    print("Du befindest dich in einem mysteriösen Wald.")
+    time.sleep(2)
+    print("Plötzlich hörst du ein seltsames Geräusch und siehst Licht in der Ferne.")
+    time.sleep(2)
+
+def choose_path():
+    print("Vor dir teilt sich der Weg. Welchen Weg wählst du? (links/rechts)")
+    choice = input().lower()
+    if choice == "links":
+        print("Du gehst nach links und entdeckst eine verlassene Hütte.")
+        explore_hut()
+    elif choice == "rechts":
+        print("Du gehst nach rechts und stößt auf einen steilen Abhang.")
+        climb_slope()
+    else:
+        print("Ungültige Eingabe.")
+        choose_path()
+
+def explore_hut():
+    print("In der Hütte findest du alte Bücher und eine Karte.")
+    print("Möchtest du die Karte mitnehmen? (ja/nein)")
+    choice = input().lower()
+    if choice == "ja":
+        print("Die Karte könnte nützlich sein.")
+    elif choice == "nein":
+        print("Vielleicht eine verpasste Gelegenheit.")
+    else:
+        print("Ungültige Eingabe.")
+        explore_hut()
+    cross_bridge()
+
+def climb_slope():
+    print("Der Abhang ist steil. Möchtest du versuchen, ihn zu erklimmen? (ja/nein)")
+    choice = input().lower()
+    if choice == "ja":
+        print("Du versuchst den Abhang zu erklimmen.")
+        print("Glückwunsch! Du hast es geschafft.")
+        cross_bridge()
+    elif choice == "nein":
+        print("Du entscheidest dich umzukehren.")
+        choose_path()
+    else:
+        print("Ungültige Eingabe.")
+        climb_slope()
+
+def cross_bridge():
+    print("Nachdem du die Hütte oder den Abhang erkundet hast, kommst du zu einer alten Brücke.")
+    print("Die Brücke sieht alt und unsicher aus. Was machst du? (überqueren/umkehren)")
+    choice = input().lower()
+    if choice == "überqueren":
+        print("Du wagst es, die Brücke zu überqueren.")
+        print("Die Brücke hält deinem Gewicht stand, und du kommst sicher auf der anderen Seite an.")
+        challenge()
+    elif choice == "umkehren":
+        print("Vielleicht ist es sicherer, umzukehren.")
+        choose_path()
+    else:
+        print("Ungültige Eingabe.")
+        cross_bridge()
+
+def challenge():
+    print("Du kommst an einen " + Fore.YELLOW + "verzauberten Wald.")
+    time.sleep(2)
+    print(Fore.YELLOW + "Ein Kobold taucht auf und stellt dir eine Rätsel-Herausforderung.")
+    time.sleep(2)
+    print("""          
+                 ,     ,
+                /(.-""-.)\\
+            |\\  \\/      \\/  /|
+            | \\ / =.  .= \\ / |
+            \\( \\   o\\/o   / )/
+             \\_, '-/  \\-' ,_/
+              /   \\__/\\__/
+              \\ \\__\\__/
+           _/ /\\ \\ \\  \\_\\_
+          ( (  \\ \\ \\  \\  ) )
+          \\ \\  \\ \\ \\  \\ / /
+           \\ \\__\\_\\_\\__\\/      
+            \\|____________|
+    """)
+    time.sleep(2)
+    print("Was ist schwerer zu fangen als der Wind, aber leichter als die Luft? (eine Antwort eingeben)")
+    answer = input().lower()
+    if answer == "der schatten":
+        print("Richtig! Der Kobold führt dich zu einem geheimen Pfad.")
+        secret_path()
+    else:
+        print("Leider falsch. Der Kobold verschwindet und du musst einen anderen Weg finden.")
+        choose_path()
+
+def secret_path():
+    print(Fore.CYAN + "Du hast den geheimen Pfad erreicht.")
+    print(Fore.CYAN + "Hier endet die Reise für heute.")
+
+def main_game():
+    intro()
+    choose_path()
+
+if __name__ == "__main__":
+    main_game()
